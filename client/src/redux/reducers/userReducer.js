@@ -1,4 +1,4 @@
-import { SET_USER } from "../actions/user"
+import { LOGOUT_USER, SET_USER } from "../actions/user"
 
 const defaultState = {
   currentUser: {},
@@ -15,6 +15,12 @@ export default function userReducer(state = defaultState, action) {
         ...state,
         currentUser: payload,
         isAuth: true
+      }
+    
+    case LOGOUT_USER:
+      return {
+        currentUser: {},
+        isAuth: false
       }
 
     default:

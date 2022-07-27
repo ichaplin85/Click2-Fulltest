@@ -1,17 +1,32 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/User');
-const authMiddleware = require('../middleware/auth.middleware')
 const router = express.Router();
 const secretKey = process.env.JWT_SECRET;
 
 
+router.get('/', (req, res) => {
 
-router.get('/', authMiddleware, async (req, res) => {
+
+});
+
+router.post('/', async (req, res) => {
 
   try {
-    const user = await User.findOne({ _id: req.user.id });
+    const { email, password } = req.body;
+
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ messgae: "User not found" })
+    }
+    console.log(user);
+    const correctPassword = await bcrypt.compare(password, user.password)
+
+    if (!correctPassword) {
+      return res.status(400).json({ message: "Invalid password" })
+    }
 
     const token = jwt.sign({ id: user.id }, secretKey, { expiresIn: '1h' })
 
