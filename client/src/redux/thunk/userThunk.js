@@ -33,3 +33,17 @@ export const loginUser = (email, password) => async (dispatch) => {
     alert(error.response.data.message)
   }
 }
+
+
+export const authUser = () => async (dispatch) => {
+  try {
+    const response = await axios.get(`${serverURL}/auth`,
+      { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
+    )
+    dispatch(setUser(response.data.user))
+    localStorage.setItem('token', response.data.token)
+  } catch (error) {
+    alert(error.response.data.message)
+    localStorage.removeItem('token')
+  }
+}
