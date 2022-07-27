@@ -1,0 +1,12 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  .navbar__logo {}
+  .navbar__header {}
+  .navbar__wrapper {
+    .navbar__login {}
+    .navbar__register {}
+  }
+
+}
