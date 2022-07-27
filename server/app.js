@@ -52,7 +52,7 @@ let sessionConfig = {
 app.use(session(sessionConfig));
 
 
-app.use('/register', registerRouter);
+app.use('/registration', registerRouter);
 app.use('/login', authRouter);
 
 

@@ -6,7 +6,7 @@ const router = express.Router();
 const sha256 = require('sha256');
 const { check, validationResult } = require('express-validator');
 
-const Userr = require('../models/User');
+const User = require('../models/User');
 
 router.get('/', (req, res) => {
   // res.render('register');
@@ -34,14 +34,14 @@ router.post('/',
         return
       }
 
-      const candidate = await Userr.findOne({ email })
+      const candidate = await User.findOne({ email })
       console.log(candidate)
 
       if (candidate) {
         return res.status(409).json({ message: `User with email ${email} already exist` })
       }
 
-      const newUser = await Userr({ name, email, password, birthdate, gender });
+      const newUser = await User({ name, email, password, birthdate, gender });
 
       await newUser.save();
 
