@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
-import { registration } from '../../redux/actions/user';
+import { registration } from '../../redux/thunk/userThunk';
+
 import Input from '../UI/Input';
 import './registration.scss'
 

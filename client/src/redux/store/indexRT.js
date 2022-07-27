@@ -3,8 +3,8 @@ import { configureStore } from '@reduxjs/toolkit';
 
 
 const store = configureStore({
-  reducer: {users, files},
+  reducer: { users, files },
 
 })
 
-export default store;
+// export default store;
