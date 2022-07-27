@@ -1,8 +1,20 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { logoutUser } from '../../redux/actions/user';
+
 import './navbar.scss'
 
 export default function Navbar () {
+  const isAuth = useSelector(state => state.user.isAuth)
+  const dispatch = useDispatch()
+
+
+  function logoutHandler () {
+    localStorage.removeItem('token')
+    dispatch(logoutUser())
+  }
+
   return (
     <div className='navbar'>
       <img src="" alt="" className="navbar__logo" />
@@ -12,16 +24,28 @@ export default function Navbar () {
         </NavLink>
         </div>
       <ul className="navbar__wrapper">
-        <li className="navbar__login">
-          <NavLink to='/login'>
-          Login
-          </NavLink>
+
+        {!isAuth && 
+          <li className="navbar__item">
+            <NavLink to='/login'>
+              Login
+            </NavLink>
           </li>
-        <li className="navbar__register">
-          <NavLink to='/registration'>
-          Register
-          </NavLink>
+        }
+        {!isAuth && 
+          <li className="navbar__item">
+            <NavLink to='/registration'>
+              Register
+            </NavLink>
           </li>
+        }
+        {isAuth && 
+          <li className="navbar__item"
+            onClick={logoutHandler}
+          >
+              Logout
+          </li>
+        }
       </ul>
     </div>
   );
