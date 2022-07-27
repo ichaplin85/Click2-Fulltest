@@ -46,9 +46,6 @@ router.post('/',
       await newUser.save();
 
       console.log(newUser);
-      req.session.userId = newUser.id;
-      req.session.userEmail = newUser.email;
-      req.session.userName = newUser.name;
 
       return res.status(200).json({ message: "User was created" });
 
