@@ -6,6 +6,9 @@ const fileController = require('../controllers/fileController')
 
 
 router.post('/', authMiddleware, fileController.createDir)
+router.get('/', authMiddleware, fileController.fetchFiles)
+router.post('/upload', fileController.uploadFile)
+
 
 
 

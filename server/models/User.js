@@ -22,11 +22,6 @@ const User = new Schema({
     type: String,
     require: true
   },
-  // files: [{
-  //   type: ObjectId,
-  //   ref: 'File'
-  // }]
-
 })
 
 module.exports = model('User', User);

@@ -1,26 +1,44 @@
 import React from 'react';
 import { useState } from 'react';
 import { registration } from '../../redux/thunk/userThunk';
+import { useNavigate } from "react-router-dom";
+
+
 
 import Input from '../UI/Input';
 import './registration.scss'
 
 const Registration = () => {
 
-  const [email, setEmail] = useState('')
-  const [name, setName] = useState('')
-  const [password, setPassword] = useState('')
-  const [date, setDate] = useState('')
-  const [gender, setGender] = useState('')
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+  const [date, setDate] = useState('');
+  const [gender, setGender] = useState('');
+  const [file, setFile] = useState();
+
+  const navigate = useNavigate()
+
+
 
   function registerUser (e) {
     e.preventDefault();
-    registration(name, email, password, date, gender)
+    registration(name, email, password, date, gender, file)
+    setFile('')
     setEmail('');
     setName('');
     setPassword('')
     setDate('')
     setGender('')
+    navigate('/')
+  }
+
+  function fileUploadHandler (e) {
+    e.preventDefault()
+    if (e.target.files[0]) {
+      setFile(e.target.files[0])
+    }
+
   }
 
   return (
@@ -34,7 +52,7 @@ const Registration = () => {
         <p>Ваш пол?</p>
         <p><input type="radio" name='gender' value='женский' onChange={(e) => setGender(e.target.value)}/>Женский</p>
         <p><input type="radio" name='gender' value='мужской' onChange={(e) => setGender(e.target.value)}/>Мужской</p>
-        <input type="file" />
+        <input type="file" multiple={false} onChange={(e) => fileUploadHandler(e)} />
         <button>Enter</button>
 
       </form>
