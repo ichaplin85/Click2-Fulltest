@@ -6,6 +6,9 @@ const router = express.Router();
 const sha256 = require('sha256');
 const { check, validationResult } = require('express-validator');
 
+const fileService = require('../services/file.service')
+const File = require('../models/File')
+
 const User = require('../models/User');
 
 router.get('/', (req, res) => {
@@ -42,10 +45,11 @@ router.post('/',
       }
 
       const newUser = await User({ name, email, password, birthdate, gender });
-
+      // save user into DB
       await newUser.save();
 
-      console.log(newUser);
+      // create new folder for user
+      await fileService.createDir(new File({ user: newUser._id, name: '' }))
 
       return res.status(200).json({ message: "User was created" });
 
