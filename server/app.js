@@ -14,6 +14,7 @@ const FileStore = require('session-file-store')(session);
 const registerRouter = require('./routes/register.router');
 const loginRouter = require('./routes/login.router');
 const authRouter = require('./routes/auth.router');
+const fileRouter = require('./routes/file.router');
 
 
 
@@ -57,6 +58,7 @@ app.use(session(sessionConfig));
 app.use('/registration', registerRouter);
 app.use('/login', loginRouter);
 app.use('/auth', authRouter);
+app.use('/files', fileRouter);
 
 
 

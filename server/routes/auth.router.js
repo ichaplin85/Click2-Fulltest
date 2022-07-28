@@ -4,6 +4,8 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const authMiddleware = require('../middleware/auth.middleware')
 const router = express.Router();
+const fileService = require('../services/file.service.js')
+const File = require('../models/File')
 const secretKey = process.env.JWT_SECRET;
 
 
