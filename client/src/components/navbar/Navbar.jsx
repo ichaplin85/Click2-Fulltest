@@ -49,20 +49,24 @@ export default function Navbar () {
         }
         {isAuth && 
           <>
-          <NavLink to='/account'>
-            <div className="navbar__logo">
-              <img className='navbar__img' src={userImg} alt="logo" style={{width: "30px", height: "30px"}}/>
-              <p className='navbar__text'>{user.name}</p> 
-            </div>
-          </NavLink>
-          <li className="navbar__item"
-            onClick={logoutHandler}
-          >
-              Logout
-          </li>
-          <NavLink to='/people' >
-            People
-          </NavLink>
+            <li className="navbar__item"
+              onClick={logoutHandler}
+            >
+                Logout
+            </li>
+            <li className="navbar__item">
+              <NavLink to='/people' >
+                People
+              </NavLink>
+            </li>
+            <li className="navbar__item">
+              <NavLink to='/account'>
+                <div className="navbar__logo">
+                  <img className='navbar__img' src={userImg} alt="logo" style={{width: "30px", height: "30px"}}/>
+                  <p className='navbar__text'>{user.name}</p> 
+                </div>
+              </NavLink>
+            </li>
           </>
 
         }

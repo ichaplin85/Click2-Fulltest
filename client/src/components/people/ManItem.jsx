@@ -9,8 +9,8 @@ const ManItem = ({name, gender, avatar}) => {
   return (
     <div className='item'>
       <img className='item__img' src={src} alt="logo" />
-      <div className="item__name">{name}</div>
-      <div className="item__gender">{gender}</div>
+      <div className="item__name">Name: <span className='item__name-span'>{name}</span></div>
+      <div className="item__gender">Gender: <span className='item__gender-span'>{gender}</span></div>
     </div>
   );
 };

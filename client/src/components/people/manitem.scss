@@ -1,15 +1,23 @@
 .item {
-  align-items: center;
-  max-width: 100px;
-  .item__gender{
+  width: 15%;
+  text-align: center;
 
-  }
   .item__img {
-    width: 40px;
-    height: 40px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
   }
   .item__name {
+    padding-top: 10px;
+  }
+  .item__gender {
+    padding-top: 5px;
+  }
+  .item__name-span {
+    font-weight: 600;
+  }
+  .item__gender-span {
+    font-weight: 600;
 
   }
 }

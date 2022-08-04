@@ -1,10 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, createRef } from 'react';
 import { registration } from '../../redux/thunk/userThunk';
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from 'react-redux'
-
-
 
 import Input from '../UI/Input';
 import './registration.scss'
@@ -18,6 +16,8 @@ const Registration = () => {
   const [gender, setGender] = useState('');
   const [file, setFile] = useState();
 
+  const fileInput = createRef();
+
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -26,13 +26,12 @@ const Registration = () => {
   function registerUser (e) {
     e.preventDefault();
     dispatch(registration(name, email, password, date, gender, file))
-    setFile('')
     setEmail('');
     setName('');
     setPassword('')
     setDate('')
     setGender('')
-    navigate('/')
+    navigate('/people')
   }
 
   function fileUploadHandler (e) {
@@ -40,7 +39,6 @@ const Registration = () => {
     if (e.target.files[0]) {
       setFile(e.target.files[0])
     }
-    console.log(e);
   }
 
   return (
@@ -64,7 +62,7 @@ const Registration = () => {
           </div>
         </div>
         <div className="registration__file">
-          <input id='file' accept='image/*' type="file" multiple={false} onChange={(e) => fileUploadHandler(e)} />
+          <input id='file' accept='image/*' type="file" ref={fileInput} multiple={false} onChange={(e) => fileUploadHandler(e)} />
           <label htmlFor="file" className='registration__file-button'>           
            { file ? <span>{file.name}</span> : <span>Choose a file</span> }
           </label>
