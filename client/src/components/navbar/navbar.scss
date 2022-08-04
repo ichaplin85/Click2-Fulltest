@@ -6,7 +6,7 @@
   .navbar__logo {
 
     border-radius: 10px;
-    background-color: gray;
+
   }
   .navbar__title {
     font-size: 26px;
@@ -30,14 +30,20 @@
     padding-left: 15px;
     padding-right: 15px;
     display: flex;
-    gap: 15px;
+    gap: 25px;
     justify-content: center;
     align-items: center;
 
+    .navbar__item {
+      color: #FEFEFE;
+      cursor: pointer;
+
+    }
     .navbar__login {}
     .navbar__register {}
     .navbar__item a{
       color: #FEFEFE;
+      
     }
   }
 
