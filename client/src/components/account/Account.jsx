@@ -1,16 +1,22 @@
 import React, {useState} from 'react';
 import { changeUserData } from '../../redux/thunk/userThunk';
+import { useNavigate } from "react-router-dom";
 import {useDispatch} from 'react-redux'
 
 
 import Input from '../UI/Input';
+import './account.scss';
+import InputFile from '../UI/InputFile';
 
 const Account = () => {
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [file, setFile] = useState({});
+
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
 
   function fileUploadHandler (e) {
     e.preventDefault()
@@ -25,16 +31,18 @@ const Account = () => {
     dispatch(changeUserData(name, password, file))
     setName('');
     setPassword('');
-    setFile('');
+    navigate('/people')
+
   }
 
   return (
-    <div className='account__container'>
-      <form onSubmit={changeUserHandler}> 
+    <div className='account container'>
+      <h3 className="account__title">Editing</h3>
+      <form onSubmit={changeUserHandler} className="form account__form"> 
         <Input type="text" value={name} setValue={setName} placeholder="Change your name"/>
         <Input type="password" value={password} setValue={setPassword} placeholder="Change you password"/>
-        <input accept='image/*' type="file" onChange={(e) => fileUploadHandler(e)}/>
-        <button >Change profile</button>
+        <InputFile file={file} fileUploadHandler={fileUploadHandler}/>
+        <button className='button account__button'>Edit</button>
       </form>
     </div>
   );
