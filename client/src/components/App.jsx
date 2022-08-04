@@ -5,7 +5,12 @@ import Registration from "./registration/Registration";
 import Login from "./login/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { authUser } from "../redux/thunk/userThunk";
+import { authUser, fetchUsers } from "../redux/thunk/userThunk";
+import Account from "./account/Account";
+import People from "./people/People";
+import './app.scss'
+
+
 
 function App() {
   const isAuth = useSelector(state=> state.user.isAuth)
@@ -14,6 +19,7 @@ function App() {
   useEffect(()=> {
     if (localStorage.getItem('token')) {
       dispatch(authUser())
+      dispatch(fetchUsers())
     }
   }, [dispatch])
 
@@ -22,10 +28,16 @@ function App() {
       <div className="App">
       <Navbar/>
         {!isAuth && 
-                <Routes>
+              <Routes>
                 <Route path="/registration" element={<Registration/>}/>
                 <Route path="/login" element={<Login/>}/>
               </Routes>
+        }
+        {isAuth && 
+                <Routes>
+                      <Route path="/account" element={<Account/>}/>
+                      <Route path="/people" element={<People/>}/>
+                </Routes>
         }
       </div>
     </BrowserRouter>

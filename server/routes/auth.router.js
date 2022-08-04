@@ -4,13 +4,12 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const authMiddleware = require('../middleware/auth.middleware')
 const router = express.Router();
-const fileService = require('../services/file.service.js')
-const File = require('../models/File')
 const secretKey = process.env.JWT_SECRET;
 
 
 
 router.get('/', authMiddleware, async (req, res) => {
+  console.log('authrouter');
 
   try {
     const user = await User.findOne({ _id: req.user.id });
@@ -24,7 +23,8 @@ router.get('/', authMiddleware, async (req, res) => {
         name: user.name,
         email: user.email,
         gender: user.gender,
-        birthdate: user.birthdate
+        birthdate: user.birthdate,
+        avatar: user.avatar
       }
     })
   } catch (err) {
