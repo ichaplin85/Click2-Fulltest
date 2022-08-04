@@ -40,6 +40,7 @@ const Registration = () => {
     if (e.target.files[0]) {
       setFile(e.target.files[0])
     }
+    console.log(e);
   }
 
   return (
@@ -52,11 +53,22 @@ const Registration = () => {
         <Input type="password" placeholder='Enter your password' value={password} setValue={setPassword}/>
         <Input type="date" placeholder='Your birthdate' value={date} setValue={setDate}/>
         <div className="registration__select">
-        <label className='registration__label'>Your gender:</label>
-          <p><input type="radio" name='gender' value='man' onChange={(e) => setGender(e.target.value)}/>Man</p>
-          <p><input type="radio" name='gender' value='woomen' onChange={(e) => setGender(e.target.value)}/>Woomen</p>
+        <h5 className='registration__label'>Your gender:</h5>
+          <div className="registration__radio">
+            <input id='radio-1' type="radio" name='gender' value='man' onChange={(e) => setGender(e.target.value)}/>
+            <label htmlFor='radio-1' className='registration__radio-label'>Man</label>
+          </div>
+          <div className="registration__radio">
+            <input id='radio-2' type="radio" name='gender' value='woomen' onChange={(e) => setGender(e.target.value)}/>
+            <label htmlFor='radio-2' className='registration__radio-label'>Woomen</label>
+          </div>
         </div>
-        <input accept='image/*' type="file" multiple={false} onChange={(e) => fileUploadHandler(e)} />
+        <div className="registration__file">
+          <input id='file' accept='image/*' type="file" multiple={false} onChange={(e) => fileUploadHandler(e)} />
+          <label htmlFor="file" className='registration__file-button'>           
+           { file ? <span>{file.name}</span> : <span>Choose a file</span> }
+          </label>
+        </div>
         <button className='button registration__button'>Register</button>
 
       </form>
