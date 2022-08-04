@@ -1,0 +1,15 @@
+
+.account {
+  padding-top: 50px;
+
+  .account__title {
+    font-weight: 500;
+    font-size: 24px;
+  }
+  .account__form {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

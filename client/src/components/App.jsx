@@ -27,18 +27,21 @@ function App() {
     <BrowserRouter>
       <div className="App">
       <Navbar/>
+
+        {/* <Route path="/" element={<App/>}/> */}
         {!isAuth && 
-              <Routes>
-                <Route path="/registration" element={<Registration/>}/>
-                <Route path="/login" element={<Login/>}/>
-              </Routes>
-        }
-        {isAuth && 
                 <Routes>
-                      <Route path="/account" element={<Account/>}/>
-                      <Route path="/people" element={<People/>}/>
+                  <Route path="/registration" element={<Registration/>}/>
+                  <Route path="/login" element={<Login/>}/>
                 </Routes>
-        }
+          }
+          {isAuth && 
+                  <Routes>
+                        <Route path="/account" element={<Account/>}/>
+                        <Route path="/people" element={<People/>}/>
+                  </Routes>
+          }
+
       </div>
     </BrowserRouter>
   );

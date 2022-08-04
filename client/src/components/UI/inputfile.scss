@@ -1,0 +1,24 @@
+.registration__file {
+
+  #file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+  }
+  .registration__file-button {
+    width: 125px;
+    padding: 8px 5px;
+    font-size: 0.8em;
+    font-weight: 500;
+    color: white;
+    background-color: #5D5B6A;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #FEFEFE;
+    text-align: center;
+  }
+}

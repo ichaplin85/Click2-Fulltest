@@ -17,11 +17,8 @@ const Login = () => {
     setPassword('')
   }
 
-  console.log('email', email);
-  console.log('password', password);
-
   return (
-    <div className='login'>
+    <div className='login container'>
       <h3 className="h3 login__title">Login</h3>
       <form onSubmit={loginHandler} className="form login__form">
         <Input value={email} setValue={setEmail} type='email' placeholder='Enter your email'/>

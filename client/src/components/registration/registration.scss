@@ -1,7 +1,7 @@
 .registration {
   padding-top: 50px;
-  max-width: 400px;
-  margin: 0 auto;
+  // max-width: 400px;
+  // margin: 0 auto;
   .registration__title {
     margin-bottom: 25px;
     text-align: center;
@@ -13,6 +13,11 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
+
+    .registration__birthdate {
+      font-weight: 500;
+      font-size: 18px;
+    }
   }
 
   ::-webkit-calendar-picker-indicator {
@@ -20,7 +25,7 @@
     border-radius: 5px;
     cursor: pointer;
     padding: 5px 5px;
-    // color: #;
+
   }
   .registration__select {
 
@@ -30,30 +35,7 @@
       font-size: 18px;
     }
   }
-  .registration__file {
-
-    #file {
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      z-index: -1;
-    }
-    .registration__file-button {
-      width: 125px;
-      padding: 8px 5px;
-      font-size: 0.8em;
-      font-weight: 500;
-      color: white;
-      background-color: #5D5B6A;
-      display: inline-block;
-      cursor: pointer;
-      border-radius: 5px;
-      color: #FEFEFE;
-      text-align: center;
-    }
-  }
+  
   .registration__radio {
 
 

@@ -13,10 +13,9 @@ export const registration = (name, email, password, date, gender, file) => async
   formData.append('date', date)
   formData.append('gender', gender)
   formData.append('file', file)
-  console.log(formData);
   try {
     const response = await axios.post(`${serverURL}/registration`, formData)
-    console.log(response.data);
+
     localStorage.setItem('token', response.data.token)
     dispatch(setUser(response.data.user))
 
