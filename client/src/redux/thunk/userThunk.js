@@ -1,5 +1,5 @@
 import axios from "axios";
-import { setUser } from "../actions/user";
+import { fetchAllUsers, setUser } from "../actions/user";
 
 
 const serverURL = 'http://localhost:3002'
@@ -13,8 +13,10 @@ export const registration = (name, email, password, date, gender, file) => async
   formData.append('date', date)
   formData.append('gender', gender)
   formData.append('file', file)
+  console.log(formData);
   try {
     const response = await axios.post(`${serverURL}/registration`, formData)
+    console.log(response.data);
     localStorage.setItem('token', response.data.token)
     dispatch(setUser(response.data.user))
 
@@ -52,4 +54,33 @@ export const authUser = () => async (dispatch) => {
     alert(error.response.data.message)
     localStorage.removeItem('token')
   }
+}
+
+export const changeUserData = (name, password, file) => async (dispatch) => {
+
+  const formData = new FormData()
+  formData.append('name', name)
+  formData.append('password', password)
+  formData.append('file', file)
+
+  try {
+    const response = await axios.put(`${serverURL}/account`, formData,
+      { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
+    dispatch(setUser(response.data.user))
+  } catch (e) {
+    alert(e.response.data.message)
+  }
+}
+
+export const fetchUsers = () => async (dispatch) => {
+
+  try {
+    const response = await axios(`${serverURL}/people`,
+      { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
+    )
+    dispatch(fetchAllUsers(response.data.users))
+  } catch (e) {
+    alert(e.response.data.message)
+  }
+
 }

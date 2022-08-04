@@ -1,0 +1,17 @@
+.registration {
+  padding-top: 50px;
+  max-width: 500px;
+  margin: 0 auto;
+  .registration__title {
+    margin-bottom: 25px;
+    text-align: center;
+
+  }
+  .registration__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+}

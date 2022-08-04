@@ -1,9 +1,11 @@
 import React from 'react';
+import "./input.scss"
 
 const Input = ({type, placeholder, value, setValue, name}) => {
 
   return (
-    <input 
+    <input
+    className='input' 
     type={type} 
     placeholder={placeholder} 
     value={value} 

@@ -2,11 +2,43 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  .navbar__logo {}
-  .navbar__header {}
+  background-color: #5D5B6A;
+  .navbar__logo {
+
+    border-radius: 10px;
+    background-color: gray;
+  }
+  .navbar__title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #FEFEFE;
+    letter-spacing: 0.05em;
+  }
+  .navbar__title-primary {
+    color: aqua;
+    font-size: 26px;
+    font-weight: 500;
+  }
+  .navbar__img {
+    border-radius: 50%;
+  }
+  .navbar__header {
+    padding: 15px 30px;
+    border-bottom: 1px solid #6E6C79;
+  }
   .navbar__wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+
     .navbar__login {}
     .navbar__register {}
+    .navbar__item a{
+      color: #FEFEFE;
+    }
   }
 
 }

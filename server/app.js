@@ -14,7 +14,9 @@ const FileStore = require('session-file-store')(session);
 const registerRouter = require('./routes/register.router');
 const loginRouter = require('./routes/login.router');
 const authRouter = require('./routes/auth.router');
-const fileRouter = require('./routes/file.router');
+const accountRouter = require('./routes/account.router');
+const peopleRouter = require('./routes/people.router')
+
 
 
 
@@ -31,7 +33,7 @@ const whiteList = ['http://localhost:3000']
 
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -58,14 +60,15 @@ app.use(session(sessionConfig));
 app.use('/registration', registerRouter);
 app.use('/login', loginRouter);
 app.use('/auth', authRouter);
-app.use('/files', fileRouter);
+app.use('/account', accountRouter)
+app.use('/people', peopleRouter)
 
 
 
 async function start() {
   try {
     await mongoose.connect(
-      `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.sfb3l7r.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+      `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.sfb3l7r.mongodb.net/?retryWrites=true&w=majority`
     )
 
     app.listen(PORT, () => {

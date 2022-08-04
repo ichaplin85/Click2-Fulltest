@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  console.log('login');
 
   try {
     const { email, password } = req.body;
@@ -37,7 +38,8 @@ router.post('/', async (req, res) => {
         name: user.name,
         email: user.email,
         gender: user.gender,
-        birthdate: user.birthdate
+        birthdate: user.birthdate,
+        avatar: user.avatar
       }
     })
   } catch (err) {

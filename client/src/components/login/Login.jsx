@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux'
 import { loginUser } from '../../redux/thunk/userThunk';
 import Input from '../UI/Input';
+import "./login.scss"
 
 const Login = () => {
   const [email, setEmail] = useState('')
@@ -20,14 +21,13 @@ const Login = () => {
   console.log('password', password);
 
   return (
-    <div className='container__login'>
-      <div className="container__text">Login</div>
-      <form onSubmit={loginHandler}>
+    <div className='login'>
+      <h3 className="h3 login__title">Login</h3>
+      <form onSubmit={loginHandler} className="form login__form">
         <Input value={email} setValue={setEmail} type='email' placeholder='Enter your email'/>
         <Input value={password} setValue={setPassword} type='password' placeholder='Enter your password' />
-        <button>Enter</button>
+        <button className='button login__button'>Login</button>
       </form>
-      
     </div>
   );
 };

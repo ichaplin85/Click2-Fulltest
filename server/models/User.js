@@ -22,6 +22,9 @@ const User = new Schema({
     type: String,
     require: true
   },
+  avatar: {
+    type: String,
+  }
 })
 
 module.exports = model('User', User);
