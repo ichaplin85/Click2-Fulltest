@@ -1,4 +1,7 @@
 
+.active {
+  color:#5c7ac1;
+}
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -37,7 +40,12 @@
     .navbar__item {
       color: #FEFEFE;
       cursor: pointer;
-
+    }
+    .navbar__item:hover {
+      color: #cfc2c2;
+    }
+    .navbar__item a:hover {
+      color: #cfc2c2;
     }
     .navbar__login {}
     .navbar__register {}

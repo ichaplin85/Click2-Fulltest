@@ -9,11 +9,9 @@ const secretKey = process.env.JWT_SECRET;
 
 
 router.get('/', authMiddleware, async (req, res) => {
-  console.log('authrouter');
 
   try {
     const user = await User.findOne({ _id: req.user.id });
-
     const token = jwt.sign({ id: user.id }, secretKey, { expiresIn: '1h' })
 
     return res.status(200).json({

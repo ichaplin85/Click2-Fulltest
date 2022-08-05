@@ -1,5 +1,5 @@
 import axios from "axios";
-import { fetchAllUsers, setUser } from "../actions/user";
+import { fetchAllUsers, fetchingAllUsers, fetchingErrorsUsers, setUser } from "../actions/user";
 
 
 const serverURL = 'http://localhost:3002'
@@ -33,9 +33,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     })
     dispatch(setUser(response.data.user))
     localStorage.setItem('token', response.data.token)
-    console.log(response.data);
   } catch (error) {
-
     alert(error.response.data.message)
   }
 }
@@ -73,12 +71,14 @@ export const changeUserData = (name, password, file) => async (dispatch) => {
 
 export const fetchUsers = () => async (dispatch) => {
 
+  dispatch(fetchingAllUsers())
   try {
     const response = await axios(`${serverURL}/people`,
       { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } }
     )
     dispatch(fetchAllUsers(response.data.users))
   } catch (e) {
+    dispatch(fetchingErrorsUsers())
     alert(e.response.data.message)
   }
 

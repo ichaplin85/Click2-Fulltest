@@ -17,10 +17,6 @@ router.put('/', [
 
 ], authMiddleware, async (req, res) => {
 
-
-  console.log(req.body, req.files.file);
-  console.log(req.user);
-
   const { name } = req.body;
   const file = req.files.file;
   const password = await bcrypt.hash(req.body.password, 5);
@@ -40,7 +36,6 @@ router.put('/', [
     user.name = name;
 
     await user.save()
-    console.log(user);
 
     return res.status(200).json({
       user: {
@@ -58,8 +53,5 @@ router.put('/', [
   }
 })
 
-router.delete('/', async (req, res) => {
-
-})
 
 module.exports = router;

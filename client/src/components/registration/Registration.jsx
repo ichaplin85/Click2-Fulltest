@@ -31,7 +31,7 @@ const Registration = () => {
     setPassword('')
     setDate('')
     setGender('')
-    navigate('/people')
+    navigate('/')
   }
 
   function fileUploadHandler (e) {
