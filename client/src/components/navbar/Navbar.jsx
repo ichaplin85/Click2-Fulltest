@@ -26,26 +26,29 @@ export default function Navbar () {
     <div className='navbar'>
       
       <div className="navbar__header">
-        <h1 className="navbar__title">
-          Social blog
-          <span className="navbar__title-primary">.</span>
-        </h1>
+        <NavLink to="/">
+          <h1 className="navbar__title">
+            Social blog
+            <span className="navbar__title-primary">.</span>
+          </h1>
+        </NavLink>
+
         </div>
       <ul className="navbar__wrapper">
 
         {!isAuth && 
+        <>
           <li className="navbar__item">
             <NavLink to='/login'>
               Login
             </NavLink>
           </li>
-        }
-        {!isAuth && 
           <li className="navbar__item">
             <NavLink to='/registration'>
               Register
             </NavLink>
           </li>
+        </>
         }
         {isAuth && 
           <>

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { loginUser } from '../../redux/thunk/userThunk';
 import Input from '../UI/Input';
 import "./login.scss"
@@ -8,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
 
   const loginHandler = (e)=> {
@@ -15,6 +17,7 @@ const Login = () => {
     dispatch(loginUser(email, password))
     setEmail('')
     setPassword('')
+    navigate('/');
   }
 
   return (

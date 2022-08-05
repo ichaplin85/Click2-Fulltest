@@ -28,8 +28,6 @@ router.post('/',
 
     const { email, name, birthdate, gender } = req.body;
     const file = req.files.file;
-
-
     const password = await bcrypt.hash(req.body.password, 5);
 
     try {
@@ -52,11 +50,7 @@ router.post('/',
       newUser.avatar = avatarName
       await newUser.save()
 
-      console.log(newUser)
-
       const token = jwt.sign({ id: newUser.id }, secretKey, { expiresIn: '1h' })
-
-
 
       return res.status(200).json({
         token,
@@ -73,7 +67,6 @@ router.post('/',
       console.log('Register error', err);
       return res.status(401);
     }
-    // res.end();
   });
 
 module.exports = router;

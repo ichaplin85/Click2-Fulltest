@@ -7,13 +7,7 @@ const router = express.Router();
 const secretKey = process.env.JWT_SECRET;
 
 
-router.get('/', (req, res) => {
-
-
-});
-
 router.post('/', async (req, res) => {
-  console.log('login');
 
   try {
     const { email, password } = req.body;
@@ -22,7 +16,7 @@ router.post('/', async (req, res) => {
     if (!user) {
       return res.status(404).json({ messgae: "User not found" })
     }
-    console.log(user);
+    
     const correctPassword = await bcrypt.compare(password, user.password)
 
     if (!correctPassword) {
